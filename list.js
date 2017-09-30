@@ -1,6 +1,10 @@
 var Comandos = require("./comandos");
 
 var list = {
+	"@hola" : {
+		handler     : Comandos.hola ,
+		descripcion : "Lanza el saludo"
+	} ,
 	"@dailyloli" : {
 		handler     : Comandos.dailyLoli ,
 		descripcion : "Envia una loli ;)"
@@ -29,7 +33,10 @@ var list = {
 		handler     : Comandos.sendGarrita ,
 		descripcion : "Spamea la garrita"
 	} ,
-
+	"@:v"   : {
+		handler     : Comandos.sendV ,
+		descripcion : "manda al pacman"
+	} ,
 	"@amor"        : {
 		handler     : Comandos.sendAmor ,
 		descripcion : "Empareja maricos"
@@ -58,7 +65,7 @@ var list = {
 		handler     : Comandos.sendPokemon ,
 		descripcion : "Lanza una fusion random de pokemones"
 	} ,
-	"@hernanOn"    : {
+	"teki"    : {
 		handler     : Comandos.switchHernan(true) ,
 		descripcion : "Enciende subnormales"
 	} ,
@@ -78,7 +85,7 @@ var list = {
 		handler     : Comandos.resucitar ,
 		descripcion : "Regresa al we"
 	} ,
-	"@help"        : {
+	"@@@help"        : {
 		handler : function (apiInstance , message , cb) {
 			var self     = list;
 			var response = "";

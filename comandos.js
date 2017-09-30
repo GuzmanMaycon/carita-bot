@@ -1,12 +1,18 @@
 var fs      = require("fs");
 var request = require("request");
 var stream  = require('stream');
+var songs 	= require("./songs.json");
 
 
 
 var comandos = {};
 
 module.exports = comandos;
+
+comandos.hola = function(apiInstance, message, cb){
+	var song = songs.saludo[Math.floor(Math.random() * songs.saludo.length)]
+	return apiInstance.sendMessage("Hola, soy un botcito ... Maycon está atareado ahora pero te dejo esta canción para matar el tiempo:"+song , message.threadID , cb);
+}
 
 
 comandos.sendCama = function (apiInstance , message , cb) {
@@ -29,7 +35,7 @@ comandos.sendAmor = function (apiInstance , message , cb) {
 
 			if ( user1_id == user2_id ) {
 
-				response = user1_id + " y " + user2_id + " se aman en secreto .. FOREVERALONE";
+				response = " Nadie ama a "+user1_id + " vas a morir sol@ ";
 			} else {
 				response = user1_id + " y " + user2_id + " se aman en secreto";
 			}
@@ -42,6 +48,12 @@ comandos.sendAmor = function (apiInstance , message , cb) {
 };
 
 comandos.sendGarrita = function (apiInstance , message , cb) {
+	var garritaId = "144884792352454";
+	var response  = "Has activado el comando garrita , spameen la garrita perras";
+	return apiInstance.sendMessage({ body : response , sticker : garritaId } , message.threadID , cb);
+};
+
+comandos.sendV = function (apiInstance , message , cb) {
 	var garritaId = "144884792352454";
 	var response  = "Has activado el comando garrita , spameen la garrita perras";
 	return apiInstance.sendMessage({ body : response , sticker : garritaId } , message.threadID , cb);
@@ -119,6 +131,15 @@ comandos.sendTwitchEmote = function (apiInstance , message , cb) {
 		"@PogChamp" : directory + "PogChamp.jpg" ,
 		"@Kreygasm" : directory + "Kreygasm.jpg"
 	};
+
+
+
+
+
+
+
+
+
 
 	if ( emote && emotes[ emote ] ) {
 		return apiInstance.sendMessage({ attachment : fs.createReadStream(emotes[ emote ]) } , message.threadID , cb);
